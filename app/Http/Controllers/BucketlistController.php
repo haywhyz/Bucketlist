@@ -47,6 +47,7 @@ class BucketlistController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'item_id'=> 'nullable',
             'created_by' => 'required'
         ]);
         $bucket= Bucketlist::findOrFail($id);
@@ -58,11 +59,32 @@ class BucketlistController extends Controller
     }
    public function destroy($id)
    {
-
         $bucket= Bucketlist::findOrFail($id);
         $bucket->delete();
         return response('Deleted Successfully', 200);
    }
+   public function itemCreate($id)
+   {
+        $bucket = Bucketlist::findOrFail($id);
+
+        $item = new Item;
+        $item->name = $request->input('name');
+        $item->done = $request->input('done');
+        $bucket->items()->save($item);
+        // $item->save();
+        return response()->json($bucket, 200);
+   }
+   public function itemList(Bucketlist $bucket, Item $item)
+   {
+    $bucket = Bucketlist::find($id);
+    $item = $bucket->item;
+    return response()->json($item, 200);
+
+   }
+
+   
+
+   
 
    
 }

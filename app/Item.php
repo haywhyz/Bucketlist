@@ -19,7 +19,7 @@ class Item extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'done',
+        'name','bucket_id', 'done', 
     ];
 
     

@@ -16,6 +16,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('bucket_id')->unsigned();
+            $table->foreign('bucket_id')->references('id')->on('bucketlists') ->onDelete('cascade');
             $table->timestamps();
             $table->boolean('done');
         });

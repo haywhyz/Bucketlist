@@ -22,5 +22,8 @@ $router->group(['prefix'=>'api/v1'], function() use($router){
     $router->get('/bucketlists/{id}', 'BucketlistController@show');
     $router->put('/bucketlists/{id}', 'BucketlistController@update');
     $router->delete('/bucketlists/{id}', 'BucketlistController@destroy');
+    // $router->post('/bucketlists/{id}item', 'BucketlistController@itemCreate');
+    $router->get('/bucketlists/{bucket}item', 'BucketlistController@itemList');
+
 
 });

@@ -19,7 +19,7 @@ class Bucketlist extends Model implements AuthenticatableContract, AuthorizableC
      * @var array
      */
     protected $fillable = [
-        'name', 'created_by'
+        'name', 'created_by' 
     ];
 
 
