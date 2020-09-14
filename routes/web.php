@@ -15,6 +15,12 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/', function () use ($router){
-    return $router->app->version();
+$router->group(['prefix'=>'api/v1'], function() use($router){
+
+    $router->get('/bucketlists', 'BucketlistController@index');
+    $router->post('/bucketlists', 'BucketlistController@create');
+    $router->get('/bucketlists/{id}', 'BucketlistController@show');
+    $router->put('/bucketlists/{id}', 'BucketlistController@update');
+    $router->delete('/bucketlists/{id}', 'BucketlistController@destroy');
+
 });
